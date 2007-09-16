@@ -1,26 +1,24 @@
-%define product		kupu
-%define realVersion     1.3.9
-%define release         1
-
-%define version %(echo %{realVersion} | sed -e 's/-/./g')
+%define product	kupu
+%define name    zope-%{product}
+%define version 1.4.2
+%define release %mkrel 1
 
 %define zope_minver	2.7
 
 %define zope_home	%{_prefix}/lib/zope
 %define software_home	%{zope_home}/lib/python
 
-Summary:	Kupu is a cross-browser WYWSIWYG editor
-Name:		zope-%{product}
+Name:		%{name}
 Version:	%{version}
-Release:	%mkrel %{release}
+Release:	%{release}
+Summary:	Kupu is a cross-browser WYWSIWYG editor
 License:	BSDish
 Group:		System/Servers
-Source:		http://plone.org/products/kupu/releases/%{version}/kupu.tar.bz2
-Patch0:		kupu-python-version.patch
 URL:		http://plone.org/products/kupu/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-BuildArch:	noarch
+Source:		http://plone.org/products/kupu/releases/%{version}/kupu-%{version}.tgz
 Requires:	zope >= %{zope_minver}
+BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Kupu is a cross-browser WYWSIWYG editor. It allows the comfortable
@@ -47,7 +45,9 @@ from CSS, but also providing a JavaScript extension API.
 
 %prep
 %setup -c -q
-%patch0 -p0
+find . -type f -name *.py -o -name *.cgi | xargs \
+    perl -pi -e 's|#!/usr/bin/python.*|#!/usr/bin/python2.4|'
+
 
 %build
 # Not much, eh? :-)
@@ -73,9 +73,5 @@ if [ -f "%{_prefix}/bin/zopectl" ] && [ "`%{_prefix}/bin/zopectl status`" != "da
 fi
 
 %files
-%defattr(-, root, root, 0755)
+%defattr(-,root,root)
 %{software_home}/Products/*
-
-
-
-
