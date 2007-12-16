@@ -1,6 +1,7 @@
 %define product	kupu
 %define name    zope-%{product}
-%define version 1.4.2
+%define version 1.4.6
+%define bad_version %(echo %{version} | sed -e 's/\\./-/g')
 %define release %mkrel 1
 
 %define zope_minver	2.7
@@ -15,7 +16,7 @@ Summary:	Kupu is a cross-browser WYWSIWYG editor
 License:	BSDish
 Group:		System/Servers
 URL:		http://plone.org/products/kupu/
-Source:		http://plone.org/products/kupu/releases/%{version}/kupu-%{version}.tgz
+Source:		http://plone.org/products/kupu/releases/%{version}/kupu-%{bad_version}.tgz
 Requires:	zope >= %{zope_minver}
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
