@@ -12,7 +12,7 @@
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Summary:	Kupu is a cross-browser WYWSIWYG editor
+Summary:	Cross-browser WYWSIWYG editor
 License:	BSDish
 Group:		System/Servers
 URL:		http://plone.org/products/kupu/
