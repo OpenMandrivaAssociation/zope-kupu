@@ -15,7 +15,7 @@ Release:	%{release}
 Summary:	Cross-browser WYWSIWYG editor
 License:	BSDish
 Group:		System/Servers
-URL:		http://plone.org/products/kupu/
+URL:		https://plone.org/products/kupu/
 Source:		http://plone.org/products/kupu/releases/%{version}/kupu-%{bad_version}.tgz
 Requires:	zope >= %{zope_minver}
 BuildArch:	noarch
